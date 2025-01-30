@@ -261,7 +261,6 @@ cout <<"\033[0m";
 }
 
 void printBoard(){
-cout << "\033[30m";
 cout << "       |       |       " << endl;
 cout << "   1   |   2   |   3   " << endl;
 cout << "       |       |       " << endl;
@@ -273,7 +272,6 @@ cout << "-------+-------+-------" << endl;
 cout << "       |       |       " << endl;
 cout << "   7   |   8   |   9   " << endl;
 cout << "       |       |       " << endl;
-cout << "\033[0m";
 }
 
 // determina qué línea del tablero ofrece la victoria
@@ -360,23 +358,21 @@ int main(int argc, char * argv[])
     char gamemsg = '0';
     int gamenum = 0;
     char tablero[10] = {'0','0','0','0','0','0','0','0','0','0'};
-    string myskin = "0";
-    string yourskin = "0";
     string skX = "x", skO =" ";
 
     // declaración de variables propias del programa principal (locales a main)
     char f_verbose = 0;         // flag, 1: imprimir información extra
     struct addrinfo * servinfo; // puntero a estructura de dirección destino
     int sock;                   // descriptor del socket
-    char msg[MAX_BUFF_SIZE];    // buffer donde almacenar datos para enviar
 
     // verificación del número de parámetros:
-    if (argc != 3)
+    if (argc < 3)
     {
         printf("Número de parámetros incorrecto \n");
-        printf("Uso: %s servidor puerto/servicio\n", argv[0]);
+        printf("Uso: %s servidor puerto/servicio/skins\n", argv[0]);
         exit(1); // finaliza el programa indicando salida incorrecta (1)
     }
+
 
     // obtiene estructura de direccion
     servinfo = obtener_struct_direccion(argv[1], argv[2], f_verbose);
@@ -541,6 +537,8 @@ int main(int argc, char * argv[])
     setCursor(0,14);
     cout << "Presiona enter para acabar..." << endl;
     cout.flush();
+
+    while ((getchar()) != '\n');
     waitEnterKey();
 
     exit(0); // finaliza el programa indicando salida correcta (0)

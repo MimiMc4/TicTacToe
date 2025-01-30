@@ -88,7 +88,7 @@ int establecer_servicio(struct addrinfo *servinfo, char f_verbose)
 
 //determina si ha habido una victoria
 bool hasWinned(char t[]){
-    return  (t[0] == t[1] && t[1] == t[2] && t[0] != '0') || 
+    bool win = (t[0] == t[1] && t[1] == t[2] && t[0] != '0') || 
             (t[3] == t[4] && t[4] == t[5] && t[3] != '0') || 
             (t[6] == t[7] && t[7] == t[8] && t[6] != '0') || 
             (t[0] == t[3] && t[3] == t[6] && t[0] != '0') || 
@@ -96,6 +96,13 @@ bool hasWinned(char t[]){
             (t[2] == t[5] && t[5] == t[8] && t[2] != '0') || 
             (t[0] == t[4] && t[4] == t[8] && t[0] != '0') || 
             (t[2] == t[4] && t[4] == t[6] && t[2] != '0');
+	bool draw = true;
+	for(int i = 0; i < 9 && draw; i++){
+		if(t[i] == '0'){
+			draw = false;
+		}
+	}
+	return win || draw;
 }
 /**
  * Programa principal
@@ -157,10 +164,11 @@ int main(int argc, char * argv[])
             exit(1);
         }
         
+        /*
         // imprime la dirección obtenida
         printf("Aceptada conexiÃ³n con cliente:\n");
         printsockaddr(&caddr[0]);
-
+        */
 
         // acepta la conexión
         clen = sizeof caddr;
