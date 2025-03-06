@@ -1,17 +1,3 @@
-/**
- * @file clientevocalesTCP.c
- *
- * Programa *clientevocalesTCP* que envía cadenas de texto a un servidor.
- *
- * Uso: clientevocalesTCP servidor puerto
- *
- * El programa crea un socket TCP y lo conecta al servidor y puerto especificado.
- * A través del socket envía cadenas de caracteres hasta llegar a fin de fichero
- * (Control+d para provocarlo desde la entrada estándar).
- * Finalmente, espera como respuesta el número total de vocales en las
- * cadenas enviadas e imprime dicho valor por pantalla.
- */
-
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
