@@ -160,7 +160,7 @@ int main(int argc, char * argv[])
         clen = sizeof caddr[0];
         if ((conn[0] = accept(sock, (struct sockaddr *)&caddr[0], &clen)) < 0)
         {
-            perror("Error al aceptar una nueva conexiÃ³n");
+            perror("Error al aceptar una nueva conexion");
             exit(1);
         }
         
@@ -174,12 +174,12 @@ int main(int argc, char * argv[])
         clen = sizeof caddr;
         if ((conn[1] = accept(sock, (struct sockaddr *)&caddr[1], &clen)) < 0)
         {
-            perror("Error al aceptar una nueva conexiÃ³n");
+            perror("Error al aceptar una nueva conexion");
             exit(1);
         }
         
         // imprime la direcciÃ³n obtenida
-        printf("Aceptada conexiÃ³n con cliente:\n");
+        printf("Aceptada conexion con cliente:\n");
         printsockaddr(&caddr[1]);
 
         //Mandamos el numero de jugador
