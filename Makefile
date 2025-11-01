@@ -1,14 +1,11 @@
-#######################
-# definicion de variables y constantes
-#######################
 
 CC=g++
 UNAME := $(shell uname)
 
-ifeq ($(UNAME), Linux) # equipos del laboratorio L1.02
+ifeq ($(UNAME), Linux) 
 	RCFTPOPT= -Wall
 endif
-ifeq ($(UNAME), SunOS) # hendrix
+ifeq ($(UNAME), SunOS)
 	RCFTPOPT= -Wall -lsocket -lnsl -lrt
 endif
 
